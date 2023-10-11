@@ -7,15 +7,23 @@ const app = express()
 app.engine('handlebars', exphbs.engine())
 app.set('view engine', 'handlebars')
 
+app.get('/dashboard', (req, res) =>{
+    
+    const items = ['item a', 'item b', 'item c']
+
+    res.render('dashboard', { items })
+})
+
 app.get('/', (req, res) => {
 
     const usuario = {
         Nome:"Jecilene",
-        Profissao:"Desenvolvedor",
+        Profissao:"Desenvolvedora",
         Idade:28
     }
+    const auth = true
 
-    res.render('home', {usuario})
+    res.render('home', {usuario, auth})
 })
 
 app.listen(3000, () => {
